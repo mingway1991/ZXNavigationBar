@@ -10,7 +10,6 @@
 #import "ZXNavigationBar.h"
 @interface ZXNavigationBar()
 @property (assign, nonatomic)BOOL shouldRefLayout;
-@property (assign, nonatomic)BOOL shouldRelayoutSubviews;
 @end
 @implementation ZXNavigationBar
 
@@ -25,15 +24,7 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
-    if(!self.shouldRelayoutSubviews){
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(CGFLOAT_MIN * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.shouldRelayoutSubviews = YES;
-            self.shouldRefLayout = YES;
-            [self relayoutSubviews];
-        });
-    }else{
-        [self relayoutSubviews];
-    }
+    [self relayoutSubviews];
 }
 
 #pragma mark - private
@@ -227,17 +218,6 @@
 
 #pragma mark 刷新子控件布局
 - (void)relayoutSubviews{
-    if(!self.shouldRelayoutSubviews){
-        if(CGRectEqualToRect(self.zx_leftBtn.frame, CGRectZero)){
-            self.zx_leftBtn.zx_width = [self getInitItemBtnWidth:self.zx_leftBtn];
-            self.zx_leftBtn.zx_height = [self getInitItemBtnHeight:self.zx_leftBtn];
-        }
-        if(CGRectEqualToRect(self.zx_rightBtn.frame, CGRectZero)){
-            self.zx_rightBtn.zx_width = [self getInitItemBtnWidth:self.zx_rightBtn];
-            self.zx_rightBtn.zx_height = [self getInitItemBtnHeight:self.zx_rightBtn];
-        }
-        return;
-    }
     if(self.zx_leftBtn && self.zx_rightBtn && self.zx_titleLabel){
         CGFloat centerOffSet = ZXAppStatusBarHeight;
         CGSize leftBtnSize = CGSizeZero;
