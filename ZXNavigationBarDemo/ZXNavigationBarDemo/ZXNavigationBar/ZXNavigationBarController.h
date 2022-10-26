@@ -314,6 +314,14 @@ pop手势是否支持多层级的手势同时触发，默认为否。若设置�
 /**
  设置左侧第二个Button的图片和点击回调
  
+ @param img 图片
+ @param clickBlock 点击回调
+ */
+- (void)zx_setSubLeftBtnWithImg:(UIImage *)img clickedBlock:(nullable subLeftBtnClickedBlock)clickBlock;
+
+/**
+ 设置左侧第二个Button的图片和点击回调
+ 
  @param imgName 图片名字
  @param clickBlock 点击回调
  */
