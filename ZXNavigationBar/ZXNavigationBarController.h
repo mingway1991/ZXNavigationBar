@@ -544,6 +544,8 @@ pop手势是否支持多层级的手势同时触发，默认为否。若设置�
 /// 手动显示导航栏历史堆栈view
 - (void)zx_showNavHistoryStackView;
 
+- (UIImage *)getBackBtnImage;
+
 @end
 
 NS_ASSUME_NONNULL_END
