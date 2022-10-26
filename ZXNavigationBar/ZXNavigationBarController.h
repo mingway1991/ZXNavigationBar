@@ -143,6 +143,11 @@ typedef void(^transparentGradientsOpaqueBlock) (void);
 @property (copy, nonatomic)NSString *zx_backBtnImageName;
 
 /**
+ 返回按钮的图片名，若不设置则使用默认的返回按钮图片
+ */
+@property (strong, nonatomic)UIImage *zx_backBtnImage;
+
+/**
  导航栏分割线View
  */
 @property (weak, nonatomic)UIView *zx_navLineView;

@@ -360,6 +360,14 @@ static ZXNavStatusBarStyle defaultNavStatusBarStyle = ZXNavStatusBarStyleDefault
     
 }
 
+- (void)setZx_backBtnImage:(UIImage *)zx_backBtnImage{
+    _zx_backBtnImage = zx_backBtnImage;
+    if(self.navigationController && self.navigationController.viewControllers.count > 1 && !self.zx_hideBaseNavBar){
+        [self.zx_navLeftBtn setImage:zx_backBtnImage forState:UIControlStateNormal];
+    }
+    
+}
+
 - (void)setZx_navTitleFont:(UIFont *)zx_navTitleFont{
     _zx_navTitleFont = zx_navTitleFont;
     self.zx_navTitleLabel.font = zx_navTitleFont;
